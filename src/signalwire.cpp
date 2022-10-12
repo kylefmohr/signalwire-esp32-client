@@ -1,22 +1,24 @@
-#include "twilio.hpp"
+#include "signalwire.hpp"
 
 /*
-   Send a SMS or MMS with the Twilio REST API
+   Send a SMS or MMS with the SignalWire REST API
 
    Inputs:
     - to_number : Number to send the message to
     - from_number : Number to send the message from
     - message_body : Text to send in the message (max 1600 characters)
+    - space_name : Name of your SignalWire space
     - picture_url : (Optional) URL to an image
 
    Outputs:
     - response : Connection messages and Twilio responses returned to caller
     - bool (method) : Whether the message send was successful
 */
-bool Twilio::send_message(
+bool SignalWire::send_message(
   const String& to_number,
   const String& from_number,
   const String& message_body,
+  const String& space_name,
   String& response,
   const String& picture_url)
 {
@@ -39,7 +41,7 @@ bool Twilio::send_message(
   // Use WiFiClientSecure class to create TLS 1.2 connection
   WiFiClientSecure client;
   client.setCACert(ca_crt);
-  const char* host = "api.twilio.com";
+  const char* host = space_name + ".signalwire.com";
   const int   httpsPort = 443;
 
   // Use WiFiClientSecure class to create TLS connection
@@ -48,7 +50,7 @@ bool Twilio::send_message(
 
   //Serial.printf("Using cert '%s'\n", ca_crt);
 
-  // Connect to Twilio's REST API
+  // Connect to SignalWire's REST API
   response += ("Connecting to host ");
   response += host;
   response += "\r\n";
@@ -71,7 +73,7 @@ bool Twilio::send_message(
                         String(account_sid) + "/Messages HTTP/1.1\r\n" +
                         auth_header + "\r\n" + "Host: " + host + "\r\n" +
                         "Cache-control: no-cache\r\n" +
-                        "User-Agent: ESP8266 Twilio Example\r\n" +
+                        "User-Agent: ESP8266 SignalWire Example\r\n" +
                         "Content-Type: " +
                         "application/x-www-form-urlencoded\r\n" +
                         "Content-Length: " + post_data.length() + "\r\n" +
@@ -102,7 +104,7 @@ bool Twilio::send_message(
 }
 
 /* Private function to create a Basic Auth field and parameter */
-String Twilio::_get_auth_header(const String& user, const String& password) {
+String SignalWire::_get_auth_header(const String& user, const String& password) {
   size_t toencodeLen = user.length() + password.length() + 2;
   char toencode[toencodeLen];
   memset(toencode, 0, toencodeLen);
