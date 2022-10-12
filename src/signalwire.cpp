@@ -118,7 +118,7 @@ String SignalWire::_get_auth_header(const String& user, const String& password) 
 
   String encoded = base64::encode((uint8_t*)toencode, toencodeLen - 1);
   String encoded_string = String(encoded);
-  std::string::size_type i = 0;
+  int i = 0;
 
   // Strip newlines (after every 72 characters in spec)
   while (i < encoded_string.length()) {
