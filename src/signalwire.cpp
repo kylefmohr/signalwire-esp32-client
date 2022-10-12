@@ -41,7 +41,8 @@ bool SignalWire::send_message(
   // Use WiFiClientSecure class to create TLS 1.2 connection
   WiFiClientSecure client;
   client.setCACert(ca_crt);
-  const char* host = space_name + ".signalwire.com";
+  char host[] = "api.signalwire.com";
+  host = space_name.c_str() + ".signalwire.com";
   const int   httpsPort = 443;
 
   // Use WiFiClientSecure class to create TLS connection
