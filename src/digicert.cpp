@@ -38,5 +38,5 @@ const char* DigiCertGlobalRootCA_crt =
 "hRbreI8Cwo6jSeB/xq1G7YC36uspy9ocCkrIpdqQ8BT+0edqnoz7Js0X9Jkx58RP\n" \
 "B22Q4gD/d+sJDzGuieJqLOow/+8CpqbpUeDfADMAwqPSJSEZTpBy+I3/Bocae5q0\n" \
 "/pwGG1jYhciI8tqg5gJM9Ow1yYhlfd7e1yLhGZszN8fMYWk=\n" \
-"-----END CERTIFICATE-----"
+"-----END CERTIFICATE-----";
 
