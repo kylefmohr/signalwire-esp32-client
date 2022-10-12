@@ -7,7 +7,7 @@
     - to_number : Number to send the message to
     - from_number : Number to send the message from
     - message_body : Text to send in the message (max 1600 characters)
-    - space_name : Name of your SignalWire space
+    - space_url : URL of your SignalWire space
     - picture_url : (Optional) URL to an image
 
    Outputs:

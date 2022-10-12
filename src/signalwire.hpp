@@ -27,7 +27,7 @@ public:
                 const String& to_number,
                 const String& from_number,
                 const String& message_body,
-                const String& space_name,
+                const String& space_url,
                 String& response,
                 const String& picture_url = ""
         );
