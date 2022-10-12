@@ -18,7 +18,7 @@ bool SignalWire::send_message(
   const String& to_number,
   const String& from_number,
   const String& message_body,
-  const String& space_name,
+  const String& space_url,
   String& response,
   const String& picture_url)
 {
@@ -41,7 +41,7 @@ bool SignalWire::send_message(
   // Use WiFiClientSecure class to create TLS 1.2 connection
   WiFiClientSecure client;
   client.setCACert(ca_crt);
-  char host[] = space_name + ".signalwire.com";
+  String host = space_url;
   const int   httpsPort = 443;
 
   // Use WiFiClientSecure class to create TLS connection
