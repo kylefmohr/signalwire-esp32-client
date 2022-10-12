@@ -1,5 +1,5 @@
-#ifndef __TWILIO__
-#define __TWILIO__
+#ifndef __SignalWire__
+#define __SignalWire__
 
 // From https://github.com/TwilioDevEd/twilio_esp8266_arduino_example
 
@@ -9,9 +9,9 @@
 #include "url_coding.hpp"
 #include "digicert.h"
 
-class Twilio {
+class SignalWire {
 public:
-        Twilio(
+        SignalWire(
                 const char* account_sid_in, 
                 const char* auth_token_in,
                 const char* ca_crt_in = DigiCertGlobalRootCA_crt
@@ -21,7 +21,7 @@ public:
                 , ca_crt(ca_crt_in)
         {}
         // Empty destructor
-        ~Twilio() = default; 
+        ~SignalWire() = default; 
 
         bool send_message(
                 const String& to_number,
@@ -32,7 +32,7 @@ public:
         );
 
 private:
-        // Account SID and Auth Token come from the Twilio console.
+        // Account SID and Auth Token come from the SignalWire console.
         // See: https://twilio.com/console for more.
 
         // Used for the username of the auth header
